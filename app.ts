@@ -3,6 +3,8 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import router from "./routes/index";
 import { errorHandler, notFoundErrorHandler } from "./middlewares/error.handler";
+import { initDatabase } from "./database/init";
+initDatabase();
 
 const app: Express = express();
 

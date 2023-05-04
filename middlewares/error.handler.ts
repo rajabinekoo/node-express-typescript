@@ -5,7 +5,7 @@ import {
   ErrorRequestHandler,
   RequestHandler,
 } from "express";
-import { AppError } from "../dto";
+import { AppError, AppValidationError } from "../dto";
 
 export const notFoundErrorHandler: RequestHandler = (
   _req: Request,
@@ -23,6 +23,8 @@ export const errorHandler: ErrorRequestHandler = (
 ) => {
   if (err instanceof AppError) {
     res.status(err.code).send(err.message);
+  } else if (err instanceof AppValidationError) {
+    res.status(err.code).send(err.errors);
   } else {
     res.status(500).send("Internal server error");
   }
