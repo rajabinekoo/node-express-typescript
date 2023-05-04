@@ -3,3 +3,4 @@ export const databaseUsername: string = "root";
 export const databasePassword: string = "katana";
 export const databaseLogging: boolean = false;
 export const databaseSync: boolean = true;
+export const hashingRounds: number = 10;
