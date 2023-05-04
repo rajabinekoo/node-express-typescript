@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "start": "ts-node ./bin/www.ts",
+    "compile": "tsc ./client/*.ts --outDir ./public --module commonjs",
+    "compile:watch": "tsc ./client/*.ts --outDir ./public --watch",
     "dev": "DEBUG=node-express-typescript:* nodemon ./bin/www.ts"
   },
   "dependencies": {

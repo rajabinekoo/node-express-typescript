@@ -4,6 +4,7 @@ import logger from "morgan";
 import router from "./routes/index";
 import { errorHandler, notFoundErrorHandler } from "./middlewares/error.handler";
 import { initDatabase } from "./database/init";
+import path from "path";
 initDatabase();
 
 const app: Express = express();
@@ -12,7 +13,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", router);
 app.use(notFoundErrorHandler);
